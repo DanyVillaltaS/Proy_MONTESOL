@@ -75,7 +75,7 @@ begin
     t_pesaje.IdEnvase:=infoBalanza.IdEnvase;
     t_pesaje.IdTurno:=infoBalanza.IdTurno;
     t_pesaje.Lote:=infoBalanza.Lote;
-    GetGross(1,Primary,t_pesaje.Peso);
+    GetGross(numBal,Primary,t_pesaje.Peso);
     t_pesaje.Fecha:=SystemTime;
     pPostPesaje(t_pesaje);
 
