@@ -51,12 +51,12 @@ begin
 	sql:="Update Info set ";
 	sql:=sql + "Tara=" +IntegerToString(entidad.Tara,0)+ ", ";
     sql:=sql + "Peso=" +IntegerToString(entidad.Peso,0)+ ", ";
-    sql:=sql + "QEnvases= QEnvases + 1 ";
+    sql:=sql + "Cantidad= Cantidad + 1 ";
 	sql:=sql + "where id="+IntegerToString(entidad.Id,0);
 			
 	sResultado := DbExec(sql, conexion);
 	if (sResultado <> SysOk) then
-		pLoggerDB("pPutInfo",DBErrMsg);
+		pLoggerDB("pPutPesos",DBErrMsg);
 		return;
 	end if;
 
@@ -99,7 +99,7 @@ begin
     DbColumnInt(conexion, 10, Info.Cantidad);  
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
-    pMostrarYLimpiar("Se obtuvo correctamente");
+    --pMostrarYLimpiar("Se obtuvo correctamente");
     return Info;
 end;
 

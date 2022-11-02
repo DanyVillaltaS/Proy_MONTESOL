@@ -1,3 +1,8 @@
+handler Timer1Trip;
+begin
+    DisplayStatus("");
+end;
+
 handler Timer2Trip;
 begin
     pGuardarPeso(CONST_ID_BALANZA_01);

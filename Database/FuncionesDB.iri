@@ -15,7 +15,7 @@ begin
 		return;
 	end if;
 	
-	pMostrarYLimpiar("Se Inserto el log correctamente");
+	pMostrarYLimpiar("Error. Revisar log");
 end;
 
 -- DELETE
@@ -34,7 +34,7 @@ begin
 		return;
 	end if;
 
-	pMostrarYLimpiar("Se eliminó con éxito el registro con Id "+IntegerToString(id,0));
+	-- pMostrarYLimpiar("Se eliminó con éxito el registro con Id "+IntegerToString(id,0));
 end;
 
 function fExisteDatosEnTabla (NombreTabla:string) : BooleanType;
@@ -99,7 +99,7 @@ begin
 		pLoggerDB("pDeleteOldItemTabla",DBErrMsg);
 		return;
 	end if;
-	pMostrarYLimpiar("Se eliminó con éxito el registro con Id");
+	--pMostrarYLimpiar("Se eliminó con éxito el registro con Id");
 end;
 
 
@@ -286,7 +286,7 @@ begin
     DbColumnInt(conexion, 1, Id_Envase);
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
-    pMostrarYLimpiar("Se obtuvo el Envase correctamente");
+    --pMostrarYLimpiar("Se obtuvo el Envase correctamente");
     return Id_Envase;
 end;
 
@@ -313,7 +313,7 @@ begin
     DbColumnInt(conexion, 1, Id_Turno);
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
-    pMostrarYLimpiar("Se obtuvo el Turno correctamente");
+    --pMostrarYLimpiar("Se obtuvo el Turno correctamente");
     return Id_Turno;
 end;
 

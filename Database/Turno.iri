@@ -64,7 +64,7 @@ begin
     
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
-    pMostrarYLimpiar("Se obtuvo correctamente");
+    --pMostrarYLimpiar("Se obtuvo correctamente");
     return Turnos;
 end;
 
@@ -96,7 +96,7 @@ begin
     DbColumnString(conexion, 3, Turno.Nombre);  
     sResultado := DbNext(conexion);  
     DbFinalize(conexion);
-    pMostrarYLimpiar("Se obtuvo correctamente");
+    --pMostrarYLimpiar("Se obtuvo correctamente");
     return Turno;
 end;
 

@@ -1,6 +1,8 @@
 procedure IniciarProceso(numBal : integer);
 infoBalanza : TypInfo;
 infoEnvase : TypEnvase;
+pGrueso : real;
+pFino : real;
 begin
     if (g_ProcesoPesaje[numBal] = 1) then
         pMostrarYLimpiar("Balanza ya iniciada");
@@ -14,38 +16,49 @@ begin
     end if;
 
     infoEnvase := fGetEnvase(infoBalanza.idEnvase);
+    pGrueso:= infoEnvase.Objetivo * (infoEnvase.CorteGrueso / 100);
+    pFino:= infoEnvase.Objetivo * (infoEnvase.CorteFino / 100);
     g_ProcesoPesaje[numBal]:=1;
     if (numBal = CONST_ID_BALANZA_01) then
-        SetSPValue(1, infoEnvase.CorteGrueso);
-        SetSPValue(2, infoEnvase.CorteFino);
+        -- DisplayStatus("Balanza 1 - g:" +realtostring(infoEnvase.CorteGrueso,0,2) + "f: " + realtostring(infoEnvase.CorteFino,0,2));
+        -- ProgramDelay(400);
+        SetSPValue(1, pGrueso);
+        SetSPValue(2, pFino);
         SetDigOut(0, 1, 1);
         EnableSP(1);
         DisableSP(2);
     elsif (numBal = CONST_ID_BALANZA_02) then
-        SetSPValue(3, infoEnvase.CorteGrueso);
-        SetSPValue(4, infoEnvase.CorteFino);
+        -- DisplayStatus("Balanza 2 - g:" +realtostring(infoEnvase.CorteGrueso,0,2) + "f: " + realtostring(infoEnvase.CorteFino,0,2));
+        -- ProgramDelay(400);
+        SetSPValue(3, pGrueso);
+        SetSPValue(4, pFino);
         SetDigOut(0, 5, 1);
         EnableSP(3);
         DisableSP(4);
     end if;
+    pMostrarYLimpiar("Balanza " + IntegerToString(numBal,0) + " iniciada");
 end;
 
 procedure DetenerProceso(numBal : integer);
 begin
-    if (g_ProcesoPesaje[numBal] = 1) then
-        if (numBal = CONST_ID_BALANZA_01) then
-            DisableSP(1);
-            DisableSP(2);
-            SetDigOut(0, 1, 0);
-            SetDigOut(0, 2, 0);
-        elsif (numBal = CONST_ID_BALANZA_02) then
-            DisableSP(3);
-            DisableSP(4);
-            SetDigOut(0, 5, 0);
-            SetDigOut(0, 6, 0);
-        end if;
-        g_ProcesoPesaje[numBal]:=0;
+    if (g_ProcesoPesaje[numBal] = 0) then
+        pMostrarYLimpiar("Balanza " + IntegerToString(numBal,0) + " sin proceso");
+        return;
     end if;
+    
+    if (numBal = CONST_ID_BALANZA_01) then
+        DisableSP(1);
+        DisableSP(2);
+        SetDigOut(0, 1, 0);
+        SetDigOut(0, 2, 0);
+    elsif (numBal = CONST_ID_BALANZA_02) then
+        DisableSP(3);
+        DisableSP(4);
+        SetDigOut(0, 5, 0);
+        SetDigOut(0, 6, 0);
+    end if;
+    g_ProcesoPesaje[numBal]:=0;
+    pMostrarYLimpiar("Balanza " + IntegerToString(numBal,0) + " detenida");
 end;
 
 procedure pGuardarPeso(numBal : integer);
@@ -68,5 +81,6 @@ begin
 
     infoBalanza.Peso := t_pesaje.Peso;
     pPutPesos(infoBalanza);
+    DetenerProceso(numBal);
     pMuestraInfoBalanzas;
 end;

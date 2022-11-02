@@ -1,6 +1,8 @@
 handler SP1Trip;
 begin
     DisableSP(1);
+    -- DisplayStatus("SP1 habilitado");
+    -- ProgramDelay(400);
     SetDigOut(0, 1, 0);
     EnableSP(2);
     SetDigOut(0, 2, 1);
@@ -10,8 +12,11 @@ end;
 handler SP2Trip;
 begin
     DisableSP(2);
+    -- DisplayStatus("SP2 habilitado");
+    -- ProgramDelay(400);
+    SetDigOut(0, 1, 0);
     SetDigOut(0, 2, 0);
-    SetTimer(2, 50);
+    SetTimer(2, 100);
     SetTimerMode(2, TimerOneShot);
     StartTimer(2);
 end;
@@ -19,6 +24,8 @@ end;
 handler SP3Trip;
 begin
     DisableSP(3);
+    -- DisplayStatus("SP3 habilitado");
+    -- ProgramDelay(400);
     SetDigOut(0, 5, 0);
     EnableSP(2);
     SetDigOut(0, 6, 1);
@@ -28,8 +35,11 @@ end;
 handler SP4Trip;
 begin
     DisableSP(4);
+    -- DisplayStatus("SP4 habilitado");
+    -- ProgramDelay(400);
+    SetDigOut(0, 5, 0);
     SetDigOut(0, 6, 0);
-    SetTimer(3, 50);
+    SetTimer(3, 100);
     SetTimerMode(3, TimerOneShot);
     StartTimer(3);
 end;

@@ -20,9 +20,14 @@ pMuestraPantallaConfiguracion;
 pMuestraConfiguracion;
 
 elsif EventWidget=lbl5 then
-pMuestraPantallaConfiguracion;
-pMuestraConfiguracion;
+DetenerProceso(CONST_ID_BALANZA_01);
 
 elsif EventWidget=lbl69 then
-pMuestraPantallaConfiguracion;
-pMuestraConfiguracion;
+DetenerProceso(CONST_ID_BALANZA_02);
+
+-- para pruebas
+elsif EventWidget = bar10 then
+IniciarProceso(CONST_ID_BALANZA_01);
+
+elsif EventWidget = bar11 then
+IniciarProceso(CONST_ID_BALANZA_02);
