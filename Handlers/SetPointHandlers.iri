@@ -27,7 +27,7 @@ begin
     -- DisplayStatus("SP3 habilitado");
     -- ProgramDelay(400);
     SetDigOut(0, 5, 0);
-    EnableSP(2);
+    EnableSP(4);
     SetDigOut(0, 6, 1);
 end;
 
