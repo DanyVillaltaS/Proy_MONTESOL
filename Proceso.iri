@@ -25,6 +25,7 @@ begin
         SetSPValue(1, pGrueso);
         SetSPValue(2, pFino);
         SetDigOut(0, 1, 1);
+        SetDigOut(0, 2, 1);
         EnableSP(1);
         DisableSP(2);
     elsif (numBal = CONST_ID_BALANZA_02) then
@@ -33,6 +34,7 @@ begin
         SetSPValue(3, pGrueso);
         SetSPValue(4, pFino);
         SetDigOut(0, 5, 1);
+        SetDigOut(0, 6, 1);
         EnableSP(3);
         DisableSP(4);
     end if;
