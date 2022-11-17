@@ -16,7 +16,7 @@ begin
     -- ProgramDelay(400);
     SetDigOut(0, 1, 0);
     SetDigOut(0, 2, 0);
-    SetTimer(2, 100);
+    SetTimer(2, 50);
     SetTimerMode(2, TimerOneShot);
     StartTimer(2);
 end;
@@ -39,7 +39,7 @@ begin
     -- ProgramDelay(400);
     SetDigOut(0, 5, 0);
     SetDigOut(0, 6, 0);
-    SetTimer(3, 100);
+    SetTimer(3, 50);
     SetTimerMode(3, TimerOneShot);
     StartTimer(3);
 end;

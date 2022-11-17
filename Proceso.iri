@@ -28,6 +28,7 @@ begin
         SetDigOut(0, 2, 1);
         EnableSP(1);
         DisableSP(2);
+        SetWidgetVisibility(sym74, Voff);
     elsif (numBal = CONST_ID_BALANZA_02) then
         -- DisplayStatus("Balanza 2 - g:" +realtostring(infoEnvase.CorteGrueso,0,2) + "f: " + realtostring(infoEnvase.CorteFino,0,2));
         -- ProgramDelay(400);
@@ -37,6 +38,7 @@ begin
         SetDigOut(0, 6, 1);
         EnableSP(3);
         DisableSP(4);
+        SetWidgetVisibility(sym75, Voff);
     end if;
     pMostrarYLimpiar("Balanza " + IntegerToString(numBal,0) + " iniciada");
 end;
@@ -53,11 +55,13 @@ begin
         DisableSP(2);
         SetDigOut(0, 1, 0);
         SetDigOut(0, 2, 0);
+        SetWidgetVisibility(sym74, Von);
     elsif (numBal = CONST_ID_BALANZA_02) then
         DisableSP(3);
         DisableSP(4);
         SetDigOut(0, 5, 0);
         SetDigOut(0, 6, 0);
+        SetWidgetVisibility(sym75, Von);
     end if;
     g_ProcesoPesaje[numBal]:=0;
     pMostrarYLimpiar("Balanza " + IntegerToString(numBal,0) + " detenida");
