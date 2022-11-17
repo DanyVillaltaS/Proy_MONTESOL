@@ -11,6 +11,7 @@ end;
 
 handler SP2Trip;
 begin
+    DisableSP(1);
     DisableSP(2);
     -- DisplayStatus("SP2 habilitado");
     -- ProgramDelay(400);
@@ -34,6 +35,7 @@ end;
 
 handler SP4Trip;
 begin
+    DisableSP(3);
     DisableSP(4);
     -- DisplayStatus("SP4 habilitado");
     -- ProgramDelay(400);

@@ -53,12 +53,14 @@ begin
     if (numBal = CONST_ID_BALANZA_01) then
         DisableSP(1);
         DisableSP(2);
+        StopTimer(2);
         SetDigOut(0, 1, 0);
         SetDigOut(0, 2, 0);
         SetWidgetVisibility(sym74, Von);
     elsif (numBal = CONST_ID_BALANZA_02) then
         DisableSP(3);
         DisableSP(4);
+        StopTimer(3);
         SetDigOut(0, 5, 0);
         SetDigOut(0, 6, 0);
         SetWidgetVisibility(sym75, Von);
